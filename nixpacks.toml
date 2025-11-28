@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["go_1_23"]
+
+[phases.build]
+cmds = ["go build -tags netgo -ldflags '-s -w' -o app ./cmd/api"]
+
+[start]
+cmd = "./app"

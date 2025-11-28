@@ -25,6 +25,7 @@ func SetupRoutes(
 
 	// Health check
 	healthHandler := handlers.NewHealthHandler()
+	mux.HandleFunc("/health", healthHandler.Ping)
 	mux.HandleFunc("/api", healthHandler.Ping)
 
 	// Maintenance endpoint (temporary - remove in production)
