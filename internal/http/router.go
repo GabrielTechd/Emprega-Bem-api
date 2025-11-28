@@ -56,6 +56,10 @@ func SetupRoutes(
 	})
 
 	mux.HandleFunc("/company/login", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == http.MethodOptions {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
 		if r.Method == http.MethodPost {
 			companyAuthHandler.Login(w, r)
 		} else {
@@ -73,6 +77,10 @@ func SetupRoutes(
 	})
 
 	mux.HandleFunc("/candidate/login", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == http.MethodOptions {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
 		if r.Method == http.MethodPost {
 			candidateAuthHandler.Login(w, r)
 		} else {
