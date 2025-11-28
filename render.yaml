@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: emprega-bem-api
+    env: go
+    buildCommand: go build -tags netgo -ldflags '-s -w' -o app ./cmd/api
+    startCommand: ./app
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: GO_VERSION
+        value: 1.23
